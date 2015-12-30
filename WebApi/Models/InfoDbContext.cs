@@ -10,6 +10,9 @@ namespace WebApi.Models
     public class InfoDbContext : DbContext
     {
         public DbSet<Information> InformationDbSet { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
