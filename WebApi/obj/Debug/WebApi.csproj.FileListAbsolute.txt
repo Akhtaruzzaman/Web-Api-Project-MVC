@@ -781,3 +781,4 @@ F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\obj\Debug\WebApi.dl
 F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\obj\Debug\WebApi.pdb
 F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\obj\Debug\WebApi.Migrations.InitialCreate2.resources
 F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\obj\Debug\WebApi.Migrations.InitialCreate3.resources
+F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\obj\Debug\WebApi.csprojResolveAssemblyReference.cache

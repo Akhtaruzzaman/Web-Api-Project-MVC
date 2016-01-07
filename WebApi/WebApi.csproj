@@ -205,6 +205,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="AspDotNet\UI\EmailSend.aspx.cs">
+      <DependentUpon>EmailSend.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspDotNet\UI\EmailSend.aspx.designer.cs">
+      <DependentUpon>EmailSend.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AspDotNet\UI\GridToExcel.aspx.cs">
       <DependentUpon>GridToExcel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -226,6 +233,7 @@
     <Compile Include="AspDotNet\UI\ReadDataFromExcelSheet.aspx.designer.cs">
       <DependentUpon>ReadDataFromExcelSheet.aspx</DependentUpon>
     </Compile>
+    <Compile Include="class-mail.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AsyncUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -269,11 +277,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="AspDotNet\UI\EmailSend.aspx" />
     <Content Include="AspDotNet\UI\GridToExcel.aspx" />
     <Content Include="AspDotNet\UI\GridToExcelSelectedColumn.aspx" />
     <Content Include="AspDotNet\UI\ReadDataFromExcelSheet.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\TagInputs.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -313,6 +323,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\TagInputs.js" />
     <Content Include="ViewApi\css\bootstrap.css" />
     <Content Include="ViewApi\css\owl.carousel.css" />
     <Content Include="ViewApi\css\popuo-box.css" />
