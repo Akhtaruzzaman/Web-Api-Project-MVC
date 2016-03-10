@@ -125,18 +125,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         var age = $("#txtage").val();
                         var contact = $("#txtContact").val();
                         var address = $("#txtaddress").val();
-                        alert(JSON.stringify([firstname, lastname, age, contact, address]));
-                        //$.ajax({
-                        //    url: 'http://localhost:61158/api/Information/Create',
-                        //    type: 'Post',
-                        //    data: JSON.stringify([firstname, lastname, age, contact, address]),
-                        //    contentType: 'application/json; charset=utf-8',
-                        //    success: function (data) {
-                        //        alert("Added Succesfully.");
-                        //        window.location.replace('http://localhost:61158/ViewApi/GetAllData.html');
-                        //    },
-                        //    error: function (msg) { alert(msg); }
-                        //});
+                        //alert(JSON.stringify([firstname, lastname, age, contact, address]));
+                        $.ajax({
+                            url: 'http://localhost:61158/api/Information/Create',
+                            type: 'Post',
+                            data: JSON.stringify([firstname, lastname, age, contact, address]),
+                            contentType: 'application/json; charset=utf-8',
+                            success: function (data) {
+                                alert("Added Succesfully.");
+                                window.location.replace('http://localhost:61158/ViewApi/GetAllData.html');
+                            },
+                            error: function (msg) { alert(msg); }
+                        });
                     });
                 });
             </script>

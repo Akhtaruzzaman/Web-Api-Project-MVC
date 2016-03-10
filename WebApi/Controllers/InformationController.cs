@@ -14,6 +14,7 @@ namespace WebApi.Controllers
     {
         readonly InfoDbContext _dbset = new InfoDbContext();
         [HttpGet]
+        [Route("api/information/getAllData")]
         public IEnumerable<Information> Get()
         {
             var data = from m in _dbset.InformationDbSet

@@ -782,3 +782,5 @@ F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\obj\Debug\WebApi.pd
 F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\obj\Debug\WebApi.Migrations.InitialCreate2.resources
 F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\obj\Debug\WebApi.Migrations.InitialCreate3.resources
 F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\obj\Debug\WebApi.csprojResolveAssemblyReference.cache
+F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\itextsharp.dll
+F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\itextsharp.xml

@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.8.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.8\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -226,6 +230,13 @@
     <Compile Include="AspDotNet\UI\GridToExcelSelectedColumn.aspx.designer.cs">
       <DependentUpon>GridToExcelSelectedColumn.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AspDotNet\UI\PdfCreate.aspx.cs">
+      <DependentUpon>PdfCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspDotNet\UI\PdfCreate.aspx.designer.cs">
+      <DependentUpon>PdfCreate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AspDotNet\UI\ReadDataFromExcelSheet.aspx.cs">
       <DependentUpon>ReadDataFromExcelSheet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -276,10 +287,12 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AngularJsCrud\Service.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="AspDotNet\UI\EmailSend.aspx" />
     <Content Include="AspDotNet\UI\GridToExcel.aspx" />
     <Content Include="AspDotNet\UI\GridToExcelSelectedColumn.aspx" />
+    <Content Include="AspDotNet\UI\PdfCreate.aspx" />
     <Content Include="AspDotNet\UI\ReadDataFromExcelSheet.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -372,6 +385,9 @@
     <Content Include="ViewApi\js\owl.carousel.js" />
     <Content Include="ViewApi\js\responsiveslides.min.js" />
     <Content Include="ViewApi\UpdateInformation.html" />
+    <Content Include="AngularJsCrud\AllData.html" />
+    <Content Include="AngularJsCrud\Controller.js" />
+    <Content Include="AngularJsCrud\Module.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -399,6 +415,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="AspDotNet\DataAccess\" />
     <Folder Include="AspDotNet\Model\" />
+    <Folder Include="CreatePdf\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
