@@ -1,0 +1,162 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Information | Home </title>
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link rel="shortcut icon" href="images/fav.png" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!---- start-smoth-scrolling---->
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- Custom Theme files -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!----webfonts---->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700' rel='stylesheet' type='text/css'>
+    <!----//webfonts---->
+    <!----start-top-nav-script---->
+    <script>
+        $(function () {
+            var pull = $('#pull');
+            menu = $('nav ul');
+            menuHeight = menu.height();
+            $(pull).on('click', function (e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+            $(window).resize(function () {
+                var w = $(window).width();
+                if (w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+    <!----//End-top-nav-script---->
+</head>
+<body>
+    <!-----//header-section----->
+    <!----features----->
+    <div class="header-section">
+        <!----- start-header---->
+        <div id="home" class="header">
+            <div class="container">
+                <div class="top-header">
+                    <div class="logo">
+                        <h2>Open Source Information</h2>
+                    </div>
+                    <!----start-top-nav---->
+                    <nav class="top-nav">
+                        <ul class="top-nav">
+                            <li><a href="GetAllData.html">All People </a></li>
+                            <li><a href="CreateInformation.html">Create</a></li>
+                        </ul>
+                        <a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
+                    </nav>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="section-head text-center">
+            <h3><span class="frist"> </span>ALL People Information<span class="second"> </span></h3>
+
+        </div>
+        <!----features-grids----->
+        <div class="features-grids">
+
+
+
+
+            <div class="text-center">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <table id="table" class="table table-hover table-bordered hidden">
+                            <tr>
+                                <td>Name</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+            <!--<div>
+                <h2>Search by ID</h2>
+                <input type="text" id="prodId" size="5" />
+                <input type="button" value="Search" onclick="find();" />
+                <p id="product" />
+            </div>-->
+
+            <script>
+                var uri = 'http://localhost:61158/api/information/getAllData';
+
+                $(document).ready(function () {
+                    // Send an AJAX request
+                    $.getJSON(uri)
+                        .done(function (data) {
+                            //// On success, 'data' contains a list of products.
+                            //$.each(data, function (key, people) {
+                            //    // Add a list item for the product.
+                            //    $('<tr>', { text: formatItem(people) }).appendTo($('#people'));
+                            //});
+
+                            var len = data.length;
+                            var txt = "";
+                            if (len > 0) {
+                                for (var i = 0; i < len; i++) {
+                                    if (data[i].FirstName) {
+                                        txt += "<tr><td class='text-left'><a  target='_blank' href='http://localhost:61158/ViewApi/getdatabyid.html?id=" + data[i].Id + "'>"
+                                            + data[i].FirstName + ' ' + data[i].LastName + "</a></td></tr>";
+                                    }
+                                }
+                                if (txt !== "") {
+                                    $("#table").append(txt).removeClass("hidden");
+                                }
+                            }
+                        });
+                });
+
+                function formatItem(people) {
+                    return '<td>' + people.FirstName + '</td>' + '<td>' + people.LastName + '</td>' + '<td>' + people.Age + '</td>' + '<td>' + people.Address + '</td>';
+                }
+
+                //function find() {
+                //    var id = $('#prodId').val();
+                //    $.getJSON(uri + '/' + id)
+                //        .done(function (data) {
+                //            $('#product').text(formatItem(data));
+                //        })
+                //        .fail(function (jqXHR, textStatus, err) {
+                //            $('#product').text('Error: ' + err);
+                //        });
+                //}
+            </script>
+
+
+
+
+        </div>
+    </div>
+  
+</body>
+</html>

@@ -1,0 +1,196 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Information | Home </title>
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link rel="shortcut icon" href="images/fav.png" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!---- start-smoth-scrolling---->
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+
+    <!-- Custom Theme files -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!----webfonts---->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700' rel='stylesheet' type='text/css'>
+    <!----//webfonts---->
+
+</head>
+<body>
+    <!-----//header-section----->
+    <!----features----->
+    <div class="header-section">
+        <!----- start-header---->
+        <div id="home" class="header">
+            <div class="container">
+                <div class="top-header">
+                    <div class="logo">
+                        <h2>Open Source Information</h2>
+                    </div>
+                    <!----start-top-nav---->
+                    <nav class="top-nav">
+                        <ul class="top-nav">
+                            <li><a href="GetAllData.html">All People </a></li>
+                            <li><a href="CreateInformation.html">Create</a></li>
+                        </ul>
+                        <a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
+                    </nav>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+       
+        <div class="features-grids">
+
+
+
+
+            <div class="text-center">
+                <h2>Update <span><label id="lblpeopleName"></label> </span> Information</h2>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="row table">
+                            <div class="col-md-4 text-right">First Name</div>
+                            <div class="col-md-5">
+                                <input type="text" id="txtfirstname" maxlength="30" class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="row table">
+                            <div class="col-md-4 text-right">Last Name</div>
+                            <div class="col-md-5">
+                                <input type="text" id="txtlastname" maxlength="30" class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="row table">
+                            <div class="col-md-4 text-right">Age</div>
+                            <div class="col-md-5">
+                                <input type="text" id="txtage" maxlength="2" class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="row table">
+                            <div class="col-md-4 text-right">Contact No</div>
+                            <div class="col-md-5">
+                                <input type="text" id="txtContact" maxlength="11" class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="row table">
+                            <div class="col-md-4 text-right">Address</div>
+                            <div class="col-md-5">
+                                <input type="text" id="txtaddress" maxlength="100" class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="row table">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <button type="submit" id="btnSave" text="Submit" class="btn-primary form-control input-sm">Update</button>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <!--<div>
+                <h2>Search by ID</h2>
+                <input type="text" id="prodId" size="5" />
+                <input type="button" value="Search" onclick="find();" />
+                <p id="product" />
+            </div>-->
+
+            <script>
+                var uri = 'http://localhost:61158/api/Information';
+                $(document).ready(function () {
+                    $("#txtfirstname").focus();
+
+
+                    function myfunction() {
+                        //alert(this.href);
+                        var r = {};
+                        var url = this.location.href;
+                        var s1 = url.split('?');
+                        var s2 = s1[1].split('&');
+                        for (var i in s2) {
+                            if (s2.hasOwnProperty(i)) {
+                                var s3 = s2[i].split('=');
+                                r[s3[0]] = s3[1];
+                            }
+                        }
+                        return r;
+                    };
+
+                    var params = myfunction();
+
+                    var id = params.id;
+
+                    var uri = 'http://localhost:61158/api/Information/get?id=' + id + '';
+
+                    $(document).ready(function () {
+                        // Send an AJAX request
+                        $.getJSON(uri)
+                            .done(function (data) {
+                                var len = data.length;
+                                var txt = "";
+                                var name = "";
+                                if (len > 0) {
+                                    for (var i = 0; i < len; i++) {
+                                        if (data[i].FirstName) {
+                                            $('#txtfirstname').val(data[i].FirstName);
+                                            $('#txtlastname').val(data[i].LastName);
+                                            $('#txtage').val(data[i].Age);
+                                            $('#txtContact').val(data[i].ContactNo);
+                                            $('#txtaddress').val(data[i].Address);
+                                            name = data[i].FirstName + ' ' + data[i].LastName + '\'s';
+                                        }
+                                    }
+                                    if (name !== "") {
+                                        $("#lblpeopleName").append(name);
+                                    }
+                                }
+                            });
+                    });
+
+
+                    $("#btnSave").click(function () {
+                        var firstname = $("#txtfirstname").val();
+                        var lastname = $("#txtlastname").val();
+                        var age = $("#txtage").val();
+                        var contact = $("#txtContact").val();
+                        var address = $("#txtaddress").val();
+
+                        $.ajax({
+                            url: 'http://localhost:61158/api/information/update',
+                            type: 'Post',
+                            data: JSON.stringify([id, firstname, lastname, age, contact, address]),
+                            contentType: 'application/json; charset=utf-8',
+                            success: function (data) {
+                                alert("Updated Succesfully.");
+                                window.location.replace('http://localhost:61158/ViewApi/getdatabyid.html?id=' + id + '');
+                            },
+                            error: function (msg) { alert(msg); }
+                        });
+                    });
+                });
+            </script>
+
+
+
+
+        </div>
+    </div>
+
+</body>
+</html>

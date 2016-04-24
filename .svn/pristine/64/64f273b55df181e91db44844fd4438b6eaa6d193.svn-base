@@ -1,0 +1,196 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Information | Home </title>
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link rel="shortcut icon" href="images/fav.png" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!---- start-smoth-scrolling---->
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script src="../Scripts/knockoutjs-3.4.0.js"></script>
+    <script src="../Scripts/functionjs.js"></script>
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+
+    <!-- Custom Theme files -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!----webfonts---->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700' rel='stylesheet' type='text/css'>
+    <!----//webfonts---->
+
+</head>
+<body>
+    <!-----//header-section----->
+    <!----features----->
+    <div class="header-section">
+        <!----- start-header---->
+        <div id="home" class="header">
+            <div class="container">
+                <div class="top-header">
+                    <div class="logo">
+                        <h2>Open Source Information</h2>
+                    </div>
+                    <!----start-top-nav---->
+                    <nav class="top-nav">
+                        <ul class="top-nav">
+                            <li><a href="GetAllData.html">All People </a></li>
+                            <li><a href="CreateInformation.html">Create</a></li>
+                        </ul>
+                        <a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
+                    </nav>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="features-grids">
+
+
+
+
+            <div class="text-center">
+                <h2>Save Information</h2>
+
+
+                <form>
+                    <p>
+                        You have asked for <span data-bind='text: gifts().length'>&nbsp;</span> gift(s)
+                    </p>
+                    <table data-bind='visible: gifts().length > 0' class="table" id="tableinsert">
+                        <thead>
+                            <tr>
+                                <th style="width: 20%">First Name</th>
+                                <th style="width: 20%">Last Name</th>
+                                <th style="width: 10%">Age</th>
+                                <th style="width: 20%">Contact</th>
+                                <th style="width: 20%">Address</th>
+                                <th style="width: 10%"></th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind='foreach: gifts' id="tablebody">
+                            <tr>
+                                <td><input title="FristName" class='form-control' data-bind='value: firstname' /></td>
+                                <td><input title="LastName" class='form-control' data-bind='value: lastname' /></td>
+                                <td><input title="Age" class='form-control' data-bind='value: age' /></td>
+                                <td><input title="ContactNo" class='form-control' data-bind='value: contact' /></td>
+                                <td><input title="Address" class='form-control' data-bind='value: address' /></td>
+                                <td><a href='#' data-bind='click: $root.removeGift'>Delete</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <button data-bind='click: addGift'>Add Gift</button>
+                    <button id="sumbit" type='button'>Submit</button>
+                </form>
+
+
+            </div>
+
+            <script>
+
+                $('#sumbit').click(function () {
+                    createJSON();
+                });
+                function createJSON() {
+                    jsonObj = [];
+                    $("#tablebody tr").each(function () {
+                        item = {}
+                        $("input[class=form-control]").each(function () {
+                            var id = $(this).attr("title");
+                            var value = $(this).val();
+
+                            item[id] = value;
+                        });
+
+                        jsonObj.push(item);
+                    });
+
+                    var jsonString = JSON.stringify(jsonObj);
+                    alert(jsonString);
+                    $.ajax({
+                        url: 'http://localhost:61158/api/Information/CreateGrid',
+                        type: 'Post',
+                        data: jsonString,
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            alert("Added Succesfully.");
+                            window.location.reload();
+                        },
+                        error: function (msg) { alert(msg); }
+                    });
+
+                }
+
+                var GiftModel = function (gifts) {
+                    var self = this;
+                    self.gifts = ko.observableArray(gifts);
+
+                    self.addGift = function () {
+                        self.gifts.push({
+                            firstname: "", lastname: "", age: "", contact: "", address: ""
+                        });
+                    };
+
+                    self.removeGift = function (gift) {
+                        self.gifts.remove(gift);
+                    };
+
+                    self.save = function (form) {
+                        alert("Could now transmit to server: " + ko.utils.stringifyJson(self.gifts));
+                        // To actually transmit to server as a regular form post, write this: ko.utils.postJson($("form")[0], self.gifts);
+                    };
+                };
+
+                var viewModel = new GiftModel([
+                    { firstname: "", lastname: "", age: "", contact: "", address: "" }
+                ]);
+                ko.applyBindings(viewModel);
+
+                // Activate jQuery Validation
+                //$("form").validate({ submitHandler: viewModel.save });
+
+
+
+                $(document).ready(function () {
+                    $("#txtfirstname").focus();
+                    $("#btnSave").click(function () {
+                        var firstname = $("#txtfirstname").val();
+                        var lastname = $("#txtlastname").val();
+                        var age = $("#txtage").val();
+                        var contact = $("#txtContact").val();
+                        var address = $("#txtaddress").val();
+
+                        $.ajax({
+                            url: 'http://localhost:61158/api/Information/Create',
+                            type: 'Post',
+                            data: JSON.stringify([firstname, lastname, age, contact, address]),
+                            contentType: 'application/json; charset=utf-8',
+                            success: function (data) {
+                                alert("Added Succesfully.");
+                                window.location.replace('http://localhost:61158/ViewApi/GetAllData.html');
+                            },
+                            error: function (msg) { alert(msg); }
+                        });
+                    });
+                });
+            </script>
+
+
+
+
+        </div>
+    </div>
+
+</body>
+</html>

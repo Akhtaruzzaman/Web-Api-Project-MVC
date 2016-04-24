@@ -784,3 +784,12 @@ F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\obj\Debug\WebApi.Mi
 F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\obj\Debug\WebApi.csprojResolveAssemblyReference.cache
 F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\itextsharp.dll
 F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\itextsharp.xml
+F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\RazorPDF.dll
+F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\Microsoft.SqlServer.ConnectionInfo.dll
+F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\Microsoft.SqlServer.Smo.dll
+F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\Microsoft.SqlServer.SmoExtended.dll
+F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\Microsoft.SqlServer.SqlEnum.dll
+F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\Microsoft.SqlServer.Dmf.dll
+F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\Microsoft.SqlServer.ServiceBrokerEnum.dll
+F:\Personal\My Personal Web Api Project\WebApiProject\WebApi\bin\Microsoft.SqlServer.RegSvrEnum.dll
