@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+<body>
+    <div ng-app="myApp" class="container">
+        <div ng-controller="ngAutoComplteController" class="jumbotron">
+            
+            <div autocomplte-alt id="txtAutocomplete" placeholder="First name" pause="100"
+                 selected-object="AfterSeletedFirstName" local-data="FirstNames" search-fields="FirstName"
+                 title-field="FirstName" minlength="1" input-class="form-control" match-class="highlight">
+
+            </div>
+            <div ng-show="SelectedCountry">
+                Selected Country : {{SelectdFirstName.FirstName}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
